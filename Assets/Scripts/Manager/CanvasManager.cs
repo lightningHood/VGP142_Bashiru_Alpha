@@ -14,6 +14,8 @@ public class CanvasManager : MonoBehaviour
 
     public Character C;
 
+    public GameObject RespawnUi;
+
 
     public void PlayGame()
     {
@@ -48,5 +50,17 @@ public class CanvasManager : MonoBehaviour
         PauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
         C.enabled = true;
+    }
+
+    public void OpenRepawn()
+    {
+        RespawnUi.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void CloseRepawn()
+    {
+        RespawnUi.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 }

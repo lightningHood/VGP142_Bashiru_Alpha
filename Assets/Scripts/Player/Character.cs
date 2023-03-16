@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     Rigidbody rb;
     Controller inputController;
     Animator anim;
-    
+
 
     public CanvasManager CM;
 
@@ -30,12 +30,18 @@ public class Character : MonoBehaviour
     public Rigidbody projectilePrefab;
     public Transform spawnPoint;
     public int projectileSpeed = 5;
+    
 
     public float lookthreshold = 0.6f;
 
     public GameObject PauseMenu;
 
     public int health;
+
+    public GameObject jumpSound;
+    public GameObject extraLife;
+    public GameObject powerUp;
+    public GameObject rushSpeed;
 
     int errorCounter = 0;
     // Start is called before the first frame update
@@ -177,6 +183,8 @@ public class Character : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(jumpSpeed * Vector3.up);
+            var go = Instantiate(jumpSound, this.transform);
+            Destroy(go, 1.0f);
                 anim.SetTrigger("IsJumping");
         }
     }
@@ -187,6 +195,33 @@ public class Character : MonoBehaviour
         if (other.CompareTag("Pickup"))
         {
             Debug.Log("Collided with: " + other.name);
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Power"))
+        {
+            projectileSpeed *= 2;
+            Debug.Log("Collided with: " + other.name);
+            var go = Instantiate(powerUp, this.transform);
+            Destroy(go, 1.0f);
+            Destroy(other.gameObject);
+        }
+
+        if(other.CompareTag("Life"))
+        {
+            health++;
+            Debug.Log("player lives: " + health);
+            var go = Instantiate(extraLife, this.transform);
+            Destroy(go, 1.0f);
+            Destroy(other.gameObject);
+        }
+
+        if(other.CompareTag("Speed"))
+        {
+            moveSpeed += 12.0f;
+            Debug.Log("Collided with: " + other.name);
+            var go = Instantiate(rushSpeed, this.transform);
+            Destroy(go, 1.0f);
             Destroy(other.gameObject);
         }
 

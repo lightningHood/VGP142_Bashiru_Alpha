@@ -45,8 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArray:
-  - {fileID: 842707305229841506, guid: 16ecba55be3257a4380f285a1346df74, type: 3}
-  - {fileID: 6938588992755132321, guid: 2108b0480668dec448db85364292c2b7, type: 3}
-  - {fileID: 2071307030751586897, guid: 13255a86475cede40b78ff423899269e, type: 3}
-  - {fileID: 9131878754300475828, guid: 4afb58af4d661244b9e981c4770dec0b, type: 3}
+  - {fileID: 1755912035837169423, guid: 98dbab411926c9e4e9b34f3e24a93783, type: 3}
+  - {fileID: 1165586580756702106, guid: e889612f96991dc4e952a5936150b403, type: 3}
   - {fileID: 3774612184624444395, guid: 7a90894ef6af4a941a75e76c0d712499, type: 3}

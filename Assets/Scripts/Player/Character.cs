@@ -230,7 +230,7 @@ public class Character : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Projectile"))
         {
             Debug.Log("Collided with: " + collision.gameObject.name);
 
@@ -263,6 +263,9 @@ public class Character : MonoBehaviour
         anim.SetTrigger("IsDeath");
         Destroy(gameObject, 3.0f);
         diedBy.GetComponent<Enemy>().currentState = Enemy.EnemyState.Patrol;
+        diedBy.GetComponent<EnemyBoo>().currentState = EnemyBoo.booEnemyState.Chase;
+        diedBy.GetComponent<EnemyTurret>().currentState = EnemyTurret.TurretEnemyState.Shoot;
+        diedBy.GetComponent<EnemyTurret>().currentState = EnemyTurret.TurretEnemyState.Chase;
         CM.GameOver();
      }
 
@@ -272,6 +275,11 @@ public class Character : MonoBehaviour
         Time.timeScale = 0.0f;
         this.enabled = false;
     }
+
+
+
+  
+
 
 
 

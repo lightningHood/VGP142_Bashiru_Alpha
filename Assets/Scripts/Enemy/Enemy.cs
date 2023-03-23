@@ -80,7 +80,12 @@ public class Enemy : MonoBehaviour
         currentState = EnemyState.Dead;
         Destroy(gameObject, 3.0f);
         GetComponent<CapsuleCollider>().enabled = false;
-        CM.Win();
+
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        {
+            CM.Win();
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)

@@ -35,7 +35,10 @@ public class CanvasManager : MonoBehaviour
 
     public void Win()
     {
-        SceneManager.LoadScene("Winner");
+        if((GameObject.FindGameObjectsWithTag("Enemy").Length == 0))
+        {
+            SceneManager.LoadScene("Winner");
+        }
     }
 
     public void GameOver()
